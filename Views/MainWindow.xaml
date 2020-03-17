@@ -12,6 +12,75 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+  <Window.Styles>
+    <Style Selector="TextBlock.GridItem">
+      <Setter Property="Margin" Value="2"></Setter>
+    </Style>
+    <Style Selector="TextBox.GridItem">
+      <Setter Property="Margin" Value="2"></Setter>
+    </Style>
+    <Style Selector="Button.GridItem">
+      <Setter Property="Margin" Value="2"></Setter>
+    </Style>
+    <Style Selector="Grid.GridItem">
+      <Setter Property="Margin" Value="2"></Setter>
+    </Style>
+  </Window.Styles>
 
+  <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"></RowDefinition>
+      <RowDefinition Height="Auto"></RowDefinition>
+      <RowDefinition Height="Auto"></RowDefinition>
+      <RowDefinition Height="Auto"></RowDefinition>
+      <RowDefinition Height="Auto"></RowDefinition>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="150"></ColumnDefinition>
+      <ColumnDefinition Width="150"></ColumnDefinition>
+      <ColumnDefinition Width="150"></ColumnDefinition>
+      <ColumnDefinition Width="150"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+
+    <Grid Grid.Row="0" Grid.Column="0" Classes="GridItem">
+      <TextBlock Text="Device IP"></TextBlock>
+    </Grid>
+    <Grid Grid.Row="0" Grid.Column="1" Classes="GridItem">
+      <TextBox Text="{Binding DeviceIP}"></TextBox>
+    </Grid>
+    <Grid Grid.Row="0" Grid.Column="2" Classes="GridItem">
+      <Button Content="Connect" Command="{Binding OnConnectClick}"></Button>
+    </Grid>
+    <Grid Grid.Row="0" Grid.Column="3" Classes="GridItem">
+      <Button Content="Disconnect" Command="{Binding OnDisconnectClick}"></Button>
+    </Grid>
+
+    <Grid Grid.Row="1" Grid.Column="0" Classes="GridItem">
+      <TextBlock Text="Install Path"></TextBlock>
+    </Grid>
+    <Grid Grid.Row="1" Grid.Column="1" Classes="GridItem">
+      <TextBox Text="{Binding InstallPath}"></TextBox>
+    </Grid>
+    <Grid Grid.Row="1" Grid.Column="2" Classes="GridItem">
+      <Button Content="Install" Command="{Binding OnInstallClick}"></Button>
+    </Grid>
+    <Grid Grid.Row="1" Grid.Column="3" Classes="GridItem">
+      <Button Content="Uninstall" Command="{Binding OnUninstallClick}"></Button>
+    </Grid>
+
+    <Grid Grid.Row="2" Grid.Column="0" Classes="GridItem">
+      <Button Content="LaunchRooms" Command="{Binding OnLaunchRoomsClick}"></Button>
+    </Grid>
+    <Grid Grid.Row="2" Grid.Column="1" Classes="GridItem">
+      <Button Content="ForceStopRooms" Command="{Binding OnForceStopRoomsClick}"></Button>
+    </Grid>
+    <Grid Grid.Row="2" Grid.Column="2" Classes="GridItem">
+      <Button Content="LaunchSettings" Command="{Binding OnLaunchSettingsClick}"></Button>
+    </Grid>
+    <Grid Grid.Row="2" Grid.Column="3" Classes="GridItem">
+      <Button Content="ForceStopSettings" Command="{Binding OnForceStopSettingsClick}"></Button>
+    </Grid>
+
+    <TextBox Grid.Row="3" Grid.ColumnSpan="4" Height="200" Text="{Binding CommandOutput}"></TextBox>
+  </Grid>
 </Window>
